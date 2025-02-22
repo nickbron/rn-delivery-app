@@ -16,7 +16,7 @@ const Layout: FC<PropsWithChildren<ILayout>> = ({
 		<View
 			className={cn(
 				'h-full w-full bg-white mt-16',
-				!showHeader && 'mt-16',
+				!showHeader && 'mt-16 px-4',
 				className
 			)}
 		>
