@@ -7,4 +7,4 @@ export interface IUser {
 	favorites: any
 }
 
-// export interface IUserEditInput extends Omit<IUser, 'id' | 'createdAt'> {}
+export interface IUserEditInput extends Omit<IUser, 'id' | 'createdAt'> {}

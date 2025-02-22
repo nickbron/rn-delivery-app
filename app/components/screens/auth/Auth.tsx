@@ -1,49 +1,62 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Pressable, Text, View } from 'react-native'
 
 import Loader from '@/components/ui/Loader'
 import Button from '@/components/ui/button/Button'
+import DismissKeyboard from '@/components/ui/field/DismissKeyboard'
 
-import { useTypedNavigation } from '@/hooks/useTypedNavigation'
-
-import { IAuthFormData } from '@/types/auth.intreface'
-
-import { TypeRootStackParamList } from '@/navigation/navigation.types'
+import { IAuthFormData } from '@/types/auth.interface'
 
 import AuthFields from './AuthFields'
+import { useAuthMutations } from './useAuthMutations'
 
-const Auth = () => {
+const Auth: FC = () => {
 	const [isReg, setIsReg] = useState(false)
+
 	const { handleSubmit, reset, control } = useForm<IAuthFormData>({
 		mode: 'onChange'
 	})
 
+	const { isLoading, registerSync, loginSync } = useAuthMutations(reset)
+
 	const onSubmit: SubmitHandler<IAuthFormData> = data => {
-		console.log(data)
+		if (isReg) registerSync(data)
+		else loginSync(data)
 	}
-	const isLoading = false
+
 	return (
-		<View className='mx-2 items-center justify-center h-full'>
-			<View className='w-9/12'>
-				<Text className='text-center text-black text-3xl font-medium mb-8'>
-					{isReg ? 'Sign up' : 'Login'}
-				</Text>
-				{isLoading ? <Loader /> : <AuthFields control={control} />}
-				<Button onPress={handleSubmit(onSubmit)}>
-					{isReg ? 'Sign up' : 'Login'}
-				</Button>
-				<Pressable onPress={() => setIsReg(!isReg)}>
-					<Text className='text-black text-center text-base mt-6'>
-						{isReg ? 'Already have an account? ' : "Don't have an account? "}
-						<Text className='text-[#47AA52]'>
-							{isReg ? 'Login' : 'Sign up'}
-						</Text>
+		<DismissKeyboard>
+			<View className='mx-2 items-center justify-center h-full'>
+				<View className='w-9/12'>
+					<Text className='text-center text-black text-3xl font-medium mb-8'>
+						{isReg ? 'Welcome Back to Foodbase' : 'Login'}
 					</Text>
-				</Pressable>
+					{isLoading ? (
+						<Loader />
+					) : (
+						<>
+							<AuthFields control={control} isPassRequired />
+
+							<Button onPress={handleSubmit(onSubmit)}>
+								{isReg ? 'Sign Up' : 'Login'}
+							</Button>
+
+							<Pressable onPress={() => setIsReg(!isReg)}>
+								<Text className='text-black text-center text-base mt-6'>
+									{isReg
+										? 'Already have an account? '
+										: "Don't have an account? "}
+									<Text className='text-[#47AA52]'>
+										{isReg ? 'Login' : 'Sign up'}
+									</Text>
+								</Text>
+							</Pressable>
+						</>
+					)}
+				</View>
 			</View>
-		</View>
+		</DismissKeyboard>
 	)
 }
 
