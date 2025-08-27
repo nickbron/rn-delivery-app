@@ -15,14 +15,14 @@ interface IProductItem {
 
 const ProductItem: FC<IProductItem> = ({ product }) => {
 	const { navigate } = useTypedNavigation()
-	console.log('product:', product)
+
 	return (
 		<View className='rounded-lg flex-col mb-3.5'>
 			{product ? (
 				<>
 					<Pressable
 						onPress={() => navigate('Product', { slug: product.slug })}
-						className='bg-gray-100 rounded-xl relative overflow-hidden p-5 flex items-center justify-center'
+						className='bg-gray-100 rounded-xl relative overflow-hidden p-5 flex items-center justify-center h-40 '
 					>
 						<Image
 							source={getMediaSource(product.image)}

@@ -15,7 +15,7 @@ const Profile: FC = () => {
 	const { setUser } = useAuth()
 
 	const { profile } = useProfile()
-
+	console.log('Path:', profile?.avatarPath)
 	return (
 		<Layout>
 			<Heading isCenter>Profile</Heading>

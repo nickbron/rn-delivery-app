@@ -25,6 +25,7 @@ const Categories: FC = () => {
 				{categories?.map(category => (
 					<Pressable
 						onPress={() => navigate('Category', { slug: category.slug })}
+						//onPress={() => console.log(getMediaSource(category.image))}
 						key={category.id}
 						className='rounded-xl bg-gray-100 p-5 mx-2'
 					>
