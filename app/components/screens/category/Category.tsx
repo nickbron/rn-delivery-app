@@ -3,23 +3,22 @@ import { Text } from 'react-native'
 
 import Layout from '@/components/layout/Layout'
 import Loader from '@/components/ui/Loader'
+import Catalog from '@/components/ui/catalog/Catalog'
 
-// import Catalog from '@/components/ui/catalog/Catalog'
-
-// import { useCategory } from './useCategory'
+import { useCategory } from './useCategory'
 
 const Category: FC = () => {
-	// const { isLoading, products, category } = useCategory()
+	const { isLoading, products, category } = useCategory()
 
-	// if (isLoading) return <Loader />
+	if (isLoading) return <Loader />
 
 	return (
 		<Layout>
-			{/* {category ? (
+			{category ? (
 				<Catalog title={category.name} products={products} />
 			) : (
 				<Text>Category not found</Text>
-			)} */}
+			)}
 		</Layout>
 	)
 }
