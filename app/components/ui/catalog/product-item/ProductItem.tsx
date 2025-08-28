@@ -25,9 +25,10 @@ const ProductItem: FC<IProductItem> = ({ product }) => {
 						className='bg-gray-100 rounded-xl relative overflow-hidden p-5 flex items-center justify-center h-40 '
 					>
 						<Image
+							style={{ resizeMode: 'contain' }}
 							source={getMediaSource(product.image)}
-							width={130}
-							height={130}
+							width={150}
+							height={100}
 						/>
 					</Pressable>
 					<ProductInfo product={product} />

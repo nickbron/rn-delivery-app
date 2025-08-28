@@ -4,6 +4,7 @@ import Explorer from '@/components/screens/explorer/Explorer'
 import Favorites from '@/components/screens/favourites/Favourites'
 import Home from '@/components/screens/home/Home'
 import Products from '@/components/screens/home/products/Products'
+import Product from '@/components/screens/product/Product'
 import Profile from '@/components/screens/profile/Profile'
 import Search from '@/components/screens/search/Search'
 
@@ -40,7 +41,7 @@ export const routes: IRoute[] = [
 	},
 	{
 		name: 'Product',
-		component: Products
+		component: Product
 	}
 	// {
 	// 	name: 'Thanks',
