@@ -7,6 +7,7 @@ import Products from '@/components/screens/home/products/Products'
 import Product from '@/components/screens/product/Product'
 import Profile from '@/components/screens/profile/Profile'
 import Search from '@/components/screens/search/Search'
+import Thanks from '@/components/screens/thanks/Thanks'
 
 import { IRoute } from './navigation.types'
 
@@ -42,9 +43,9 @@ export const routes: IRoute[] = [
 	{
 		name: 'Product',
 		component: Product
+	},
+	{
+		name: 'Thanks',
+		component: Thanks
 	}
-	// {
-	// 	name: 'Thanks',
-	// 	component: Thanks
-	// }
 ]
